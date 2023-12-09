@@ -1,0 +1,34 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+  pre_build:
+    commands:
+      - echo "Prebuild ops"
+      #- sudo apt-get update
+      
+      - pip --version
+      - python -m pip install --upgrade pip
+      - pip install -r requirements.txt pylint
+      - echo "Pylint static code analysis"
+      - pylint notes
+      - pylint notesapp --disable=C,R --ignore=views.py *.py || true
+
+
+  build:
+    commands:
+      - echo "Building the application"
+      
+  post_build:
+    commands:
+      - echo "Build completed on `date`"
+artifacts:
+  files:
+    - '**/*'
+eb_codebuild_settings:
+  aws_beanstalk_application:
+    name: "x22183868-cdos"
+  aws_beanstalk_environment:
+    name: "22233784-22233784devops"

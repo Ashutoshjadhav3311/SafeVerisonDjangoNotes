@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+  pre_build:
+    commands:
+      - echo "Static Code Analysis Using Pylint"
+      - pip install -r requirements.txt pylint
+      - pylint notes || true
+      - pylint notesapp --disable=C,R --ignore=notesapp/migrations,views.py *.py || true

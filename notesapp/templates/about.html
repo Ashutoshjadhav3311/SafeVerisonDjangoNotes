@@ -1,0 +1,31 @@
+<!-- notesapp/templates/about.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>About Space Repetition Notes</h1>
+    <p>Welcome to Space Repetition Notes, the app that helps you organize and remember your notes efficiently.</p>
+
+    <h2>Our Office Location</h2>
+    <div id="map" style="height: 400px;"></div>
+
+    <script>
+        // Initialize Google Maps
+        function initMap() {
+            var officeLocation = { lat: 53.3962455, lng: -6.213256160492393 }; 
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: officeLocation,
+                zoom: 15
+            });
+            var marker = new google.maps.Marker({
+                position: officeLocation,
+                map: map,
+                title: 'Space Repetition Notes Office'
+            });
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCbaUDe6hA5-7egZ-5Uujv8Va5ZEqlmjIE&callback=initMap" async defer></script>
+</div>
+
+{% endblock %}

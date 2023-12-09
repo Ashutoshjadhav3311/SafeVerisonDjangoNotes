@@ -1,0 +1,19 @@
+<!-- notesapp/templates/profile.html -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <h1>User Profile</h1>
+    
+    <p>Welcome to your profile, {{ user.username }}!</p>
+
+    <!-- Display user-specific information -->
+    <p>Email: {{ user.email }}</p>
+
+    <!-- Add more profile information or settings here -->
+    
+    <!-- Example: Change password link -->
+    <a href="{% url 'password_change' %}">Change Password</a>
+</div>
+{% endblock %}
