@@ -62,7 +62,7 @@ def new_note(request):
             note.user = request.user
             note.save()
 
-            revision_intervals = [3, 5, 7, 9, 10, 12]
+            revision_intervals = [1, 3, 7, 21, 30, 45]
             for interval in revision_intervals:
                 revision_date = note.time + timedelta(days=interval)
                 Revision.objects.create(note=note, revision_date=revision_date)
